@@ -1,0 +1,51 @@
+------------------------------------------------------------------
+Firewall de rede (Camada 3 e 4): Monitora o tráfego de entrada e saída da rede. Bloqueia ou permite o tráfego baseado em regras.
+- Proxy: Responde pelos clientes e serve como um middleware do tráfego da rede;
+- Inspeção de estado: Bloqueia ou permite os acesso baseando-se em protocolo e porta dos requests;
+- Gerenciado UTM: Funciona baseado no firewall de Inspeção de Estado, mas com um anti-vírus no meio. Permite maior segurança, já que valida o pacote do request, e não somente o protocolo e porta;
+- NGSW: Multiplas seguranças junta em um conjunto só;
+
+WAF (Camada 7): Firewall direto na aplicação, mais usados em Saas, bloqueia os ataques das aplicações Web. Ataques como DDoS, SQL Injection, essencial conta ameaças de day-0, etc...
+
+------------------------------------------------------------------
+DevSecOps: É pensar na Infra e na segurança desde o início da Build e automatizar os processos para permitir a continuação do DevOps
+- Saber fazer a modelagem das ameaças
+- Testes de segurança automatizados
+- Gerenciamento de incidentes
+- Análises de CVE's
+- Trilha de Auditoria
+- Políticas Automatizadas
+
+Incident Management: O que fazer quando houver incidentes? Quais devem ser os primeiros passos? Como aplicar a remediação correta?
+1º - Identificar problema ou ameaça;
+2º - Caso a ameaça ainda esteja em andamento, tirá-la de circulação;
+3º - Criar uma trilha de auditoria, coletando rastros deixados;
+4º - Criar uma remediação contra aquela ameaça para que não ocorra novamente;
+5º - Tomar medida administrativas e/ou judiciais
+
+------------------------------------------------------------------
+Suse Manager (Camada OS): Open source, gerenciador de máquinas linux, para garantir o compliance, a aplicação de updates e correções de segurança de forma automática.
+// Uso no DevSecOps:
+- Aplicação de patches
+- BCI Image (Base Container Image)
+- Scan de vulnerabilidades
+
+Esteira CI/CD: Método para entregar aplicações de forma automática. Pode conter testes, validações e regras para falhas.
+// Uso no DevSecOps:
+- Scan de vulnerabilidade
+- Automação de testes
+- Build, test & merge
+
+Neuvector (Camada 7): OpenSource. Segurança dentro do container. O Neuvector, engloba os 2 tipos de trafego (Leste-Oeste e Norte-Sul) na sua inspeção.
+// Features:
+- Tem verificação de pacotes;
+- Analise de CVE
+- Analise comportamental: Aprendizado baseado em comportamentos (Zero Trust). Usa Machine Learning. Tem um modo quarentena, que isola os PODS ou containers, para evitar que o ataque aumente.
+	- Discover: Identifica o comportamento da aplicação
+	- Monitor: Alerta para qualquer comportamento anômalo (Algo diferente do que ele descobriu no Discover)
+	- Protect: Bloqueia qualquer comportamento anômalo
+- Possui ameaças automaticamente detectadas.
+
+------------------------------------------------------------------
+Misc:
+- Em K8's, trafego Lest-Oeste é o trafego interno entre containers, pods. Já o trafego Norte-Sul, e o trafego do Cluster para Internet. 
